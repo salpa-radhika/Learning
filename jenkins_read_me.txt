@@ -17,4 +17,11 @@ it provides Ip and port info at the execution
 
 httpListenAddress=127.0.0.1 --httpPort=8080
 
-start jenkins using command -> brew services start jenkins-lts 
+
+start jenkins using command -> brew services start jenkins-lts
+
+start using jenkins by typing localhost with port ex localhost:8080
+
+the password will be available in local file /Users/Radhika/.jenkins/secrets/initialAdminPassword
+
+ 
