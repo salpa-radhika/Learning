@@ -17,3 +17,4 @@ it provides Ip and port info at the execution
 
 httpListenAddress=127.0.0.1 --httpPort=8080
 
+start jenkins using command -> brew services start jenkins-lts 
