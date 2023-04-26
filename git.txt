@@ -1,0 +1,45 @@
+git commands:
+
+From terminal using homebrew install git -> brew install git 
+check if install by checking the version -> git --version
+
+using github create a public repo 
+Add ssh keys by generating them locally 
+steps:
+Generate an SSH Key Pair
+Open a new Terminal window
+Type ssh-keygen -b 4096 -t rsa 
+You will be prompted to enter a filename. By default, your keys will be saved as id_rsa and id_rsa.pub. Simply press Enter to confirm the default - there is no need to change this unless you have multiple keys! (Note: if you would like to change the default filename, you'll need to include the complete file path)
+When prompted, enter a passphrase.
+This will created a hidden directory called .ssh that contains both your public (id_rsa.pub) and private (id_rsa.) key files. 
+View your public key
+In the same Terminal window, type cat .ssh/id_rsa.pub. This will print your public key. (Note: if you are not using the default key filename, please substitute your public key name in place of id_rsa.pub).
+
+add them in your github
+
+
+Now inyour local create a directory for performing git commands
+
+
+mkdir TestRepo
+
+Initiate git -> git init
+add some files -> touch file1.txt
+		  touch file2.py
+Add some context to files -> echo Hello World > file1.txt 
+			     echo Hello World >file2.py
+add these files to git -> git add . 
+add them individually -> git add file1.txt & git add file2.py
+check logs by using -> git logs --pretty=oneline (displays all the changes made)
+commit the changes -> git commit -m "message for commit"
+Add repo to your remote location -> git remote add origin "http/ssh link from github"
+push changes -> git push origin main
+
+check branch -> git branch
+create new branch -> git checkout <new_branch>
+to make merges use git merge <branch_name>
+check status -> git status
+to see changes mage in any file -> git diff
+to merge files along with all the commits -> git rebase <branch_name>
+
+
