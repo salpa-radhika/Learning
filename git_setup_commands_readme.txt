@@ -38,6 +38,7 @@ add these files to git -> git add .
 add them individually -> git add file1.txt & git add file2.py
 check logs by using -> git logs --pretty=oneline (displays all the changes made)
 commit the changes -> git commit -m "message for commit"
+ inorder to add new lines in same file but dont want new commit -> git commit --amend(can be done only when changes are there in local)
 Add repo to your remote location -> git remote add origin "http/ssh link from github"
 push changes -> git push origin main
 
@@ -46,12 +47,14 @@ to rename a branch ->git branch -m <new_branch_name>
 to delete a branch -> git branch -d <new_branch_name>
 
 create new branch -> git checkout <new_branch>
-to make merges use git merge <branch_name>
+to make merges use -> git merge <branch_name>
+		if wanted to ignore conflicts and wanted to aboert merge ->git merge --abort
 check status -> git status
 To see changes in local directory and staged -> git diff
  		local directory to main repo -> git diff head
 		stage to main repo -> git diff --staged
 to merge files along with all the commits -> git rebase <branch_name>
+to merge all commits as single commit to main -> git rebase -i master
 
 diff with merge and rebase in git commands is merge makes new commit with all the commits made in local branch 
 rebase  adds all the commits made in th local branch to main branch. 
@@ -69,7 +72,8 @@ if we want to restore the file from staged to directory then we can use git rest
 git mv
 for renaming the file we can use git mv <file_name> <new_file_name>
 
-
+git cherry pick
+if you want to move commit from one sub branch to multiple subbranches -> git cherry pick <commit_id>
 
 git stores data in the repo in key value i.e., SHA1
 to check value use git cat-file alphanumeric_value -p
