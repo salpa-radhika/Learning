@@ -48,8 +48,11 @@ check status -> git status
 to see changes mage in any file -> git diff
 to merge files along with all the commits -> git rebase <branch_name>
 
+diff with merge and rebase in git commands is merge makes new commit with all the commits made in local branch 
+rebase  adds all the commits made in th local branch to main branch. 
 reset commits made -> git reset --soft/--hard <commit_id>
 reset one latest commit -> git reset --hard HEAD~1
 
 revert few lines or few commits -> git revert --hard <commit_id>
-
+diff with reset and revert
+reset commands remove all the commits made after commit id but revert only removes changes made in mentioned commit id
