@@ -58,3 +58,7 @@ reset one latest commit -> git reset --hard HEAD~1
 revert few lines or few commits -> git revert --hard <commit_id>
 diff with reset and revert
 reset commands remove all the commits made after commit id but revert only removes changes made in mentioned commit id
+
+
+git stores data in the repo in key value i.e., SHA1
+to check value use git cat-file alphanumeric_value -p
