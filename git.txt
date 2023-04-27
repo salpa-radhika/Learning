@@ -45,7 +45,9 @@ check branch -> git branch
 create new branch -> git checkout <new_branch>
 to make merges use git merge <branch_name>
 check status -> git status
-to see changes mage in any file -> git diff
+To see changes in local directory and staged -> git diff
+ 		local directory to main repo -> git diff head
+		stage to main repo -> git diff --staged
 to merge files along with all the commits -> git rebase <branch_name>
 
 diff with merge and rebase in git commands is merge makes new commit with all the commits made in local branch 
