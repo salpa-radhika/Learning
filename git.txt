@@ -24,6 +24,12 @@ Now inyour local create a directory for performing git commands
 mkdir TestRepo
 
 Initiate git -> git init
+set user name and email locally or globally ->git config --local/--global user.name Radhika 
+					      git config --local/--global user.email salparadhika1997@gmail.com
+remove config using -> git config --remove-section user
+
+
+
 add some files -> touch file1.txt
 		  touch file2.py
 Add some context to files -> echo Hello World > file1.txt 
@@ -42,4 +48,8 @@ check status -> git status
 to see changes mage in any file -> git diff
 to merge files along with all the commits -> git rebase <branch_name>
 
+reset commits made -> git reset --soft/--hard <commit_id>
+reset one latest commit -> git reset --hard HEAD~1
+
+revert few lines or few commits -> git revert --hard <commit_id>
 
