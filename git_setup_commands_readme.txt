@@ -42,6 +42,9 @@ Add repo to your remote location -> git remote add origin "http/ssh link from gi
 push changes -> git push origin main
 
 check branch -> git branch
+to rename a branch ->git branch -m <new_branch_name>
+to delete a branch -> git branch -d <new_branch_name>
+
 create new branch -> git checkout <new_branch>
 to make merges use git merge <branch_name>
 check status -> git status
