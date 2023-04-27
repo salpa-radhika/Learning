@@ -59,6 +59,14 @@ revert few lines or few commits -> git revert --hard <commit_id>
 diff with reset and revert
 reset commands remove all the commits made after commit id but revert only removes changes made in mentioned commit id
 
+git restore
+If we want to restore the file that got deleted or moved to staging we can use git restore <file_name>
+if we want to restore the file from staged to directory then we can use git restore --staged <file_name>
+
+git mv
+for renaming the file we can use git mv <file_name> <new_file_name>
+
+
 
 git stores data in the repo in key value i.e., SHA1
 to check value use git cat-file alphanumeric_value -p
