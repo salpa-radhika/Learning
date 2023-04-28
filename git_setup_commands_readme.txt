@@ -46,7 +46,7 @@ check branch -> git branch
 to rename a branch ->git branch -m <new_branch_name>
 to delete a branch -> git branch -d <new_branch_name>
 
-create new branch -> git checkout <new_branch>
+create new branch -> git checkout -b <new_branch> / git branch <branch_name>
 to make merges use -> git merge <branch_name>
 		if wanted to ignore conflicts and wanted to aboert merge ->git merge --abort
 check status -> git status
@@ -56,10 +56,13 @@ To see changes in local directory and staged -> git diff
 to merge files along with all the commits -> git rebase <branch_name>
 to merge all commits as single commit to main -> git rebase -i master
 
+
 diff with merge and rebase in git commands is merge makes new commit with all the commits made in local branch 
 rebase  adds all the commits made in th local branch to main branch. 
-reset commits made -> git reset --soft/--hard <commit_id>
-reset one latest commit -> git reset --hard HEAD~1
+reset commits made ->   git reset --soft/--hard/--mixed <commit_id>
+						git reset --hard HEAD~1 will move files to stage and current directory
+     					git reset <commit_id> --mixed will move files to stage
+     					git reset <commit_id> --will not move files yet all
 
 revert few lines or few commits -> git revert --hard <commit_id>
 diff with reset and revert
@@ -68,12 +71,38 @@ reset commands remove all the commits made after commit id but revert only remov
 git restore
 If we want to restore the file that got deleted or moved to staging we can use git restore <file_name>
 if we want to restore the file from staged to directory then we can use git restore --staged <file_name>
+git restore --source head~2 <main_file_name>
 
 git mv
 for renaming the file we can use git mv <file_name> <new_file_name>
 
 git cherry pick
 if you want to move commit from one sub branch to multiple subbranches -> git cherry pick <commit_id>
+
+git  stash
+We can use git stash when moving to new branch with out committing the changes 
+git statsh 
+git stash list for list of stashes
+git stash pop for retrieving recent stash and stash will be removed from the list
+git stash apply will retrieve and changes will still be in stash list
+git stash save "name"
+git stash show <stash-id> -p for see the changes in particular file
+git stash drop <stash-id>  will delete particular stash 
+git stash clear will clear every stash
+git stash branch <branch_name> stash_id if wanted for particular stash and will create new branch
+
+git checkout
+git checkout <branch_name>
+git checkout <commit_id> this is called detached head
+git checkout -b <new_branch>
+git checkout - this moves to one branch earlier
+git checkout head~2
+git checkout -- <file_name>
+
+
+git switch 
+git switch only works in between the branches
+
 
 git stores data in the repo in key value i.e., SHA1
 to check value use git cat-file alphanumeric_value -p
