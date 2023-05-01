@@ -105,4 +105,4 @@ git switch only works in between the branches
 
 
 git stores data in the repo in key value i.e., SHA1
-to check value use git cat-file alphanumeric_value -p
+to check value use git cat-file alphanumeric_value -p.
