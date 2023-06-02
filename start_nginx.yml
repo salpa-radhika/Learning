@@ -1,17 +1,11 @@
 ---
-	name: install and start nginx
-	host: all/ip
-	become: root
-
-	tasks:
-		-name: install nginx 
-		 shell: sudo install nginx/
-		 apt:
-		 	name: nginx
-		 	state: present
-		 
-
-		-name: start nginx
-		 service: 
-		 	name: start nginx
-		 	state: started
+- name: install nginx and start
+  hosts: 172.31.14.118
+  become_user: root
+  tasks:
+   - name: install
+     shell: apt install nginx
+   - name: start
+     service:
+      name: start
+      state: started
