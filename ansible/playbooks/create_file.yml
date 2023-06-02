@@ -1,0 +1,11 @@
+---
+- name: create new file
+  hosts: 172.31.2.181
+  tasks:
+    - name: create new file
+      file:
+        state: touch
+        dest: client_new_file
+        group: ubuntu
+        owner: ubuntu
+        mode: 444

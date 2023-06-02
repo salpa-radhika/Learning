@@ -1,0 +1,9 @@
+---
+- name: add group
+  hosts: 172.31.2.181
+  become_user: root
+  tasks:
+  - name: add group
+    group:
+     name: radhik
+     state: present

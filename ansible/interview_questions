@@ -1,0 +1,45 @@
+What is configuartion management?
+
+Configuration management comes in picture for automating system administrations tasks.
+Like before we used to manually performs tasks like updating software , installing some packages but if we have multiple servers for performing tasks then to overcome manual work can usde config managment tools
+
+Why Ansible?
+Ansible follows push mechanism which means we can write and execute the configuration to multiple servers
+It does follow master slave architecture i.e., agent less model
+No need of learning new language but can be used with yml language
+password less authentication which works with ssh
+it has an inventory file where can group client servers and perform tasks accordingly
+
+Write playbook for installing and starting any service?
+
+---
+-name: Package installation
+ hosts: client_server
+ become_user: root
+ tasks:
+  -name: install httpd
+   yum:
+    name: httpd
+    state: present
+  -name: start httpd
+   service:
+    name: httpd
+    state: started
+    enabled: yes
+
+How ansible helped your organisation?
+Ansible helped our organisation in multiple ways like Change the configuration of an application, OS, or device; start and stop services; install or update applications; implement a security policy
+
+What is ansible dynamic inventory?
+
+
+What is ansible galaxy command?
+
+If you wanted to write playbooks with entire structure having handlers / readme / metadata then using galaxy command you can automatically get the default structure
+
+ansible-galaxy role init Kunernetes
+
+Structure of ansible playbooks with roles?
+tasks/handlers/metadata/readme/templates/defaults/variables
+
+Handlers are tasks that only run when notified.
