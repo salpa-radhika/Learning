@@ -1,0 +1,17 @@
+---
+	name: install and start nginx
+	host: all/ip
+	become: root
+
+	tasks:
+		-name: install nginx 
+		 shell: sudo install nginx/
+		 apt:
+		 	name: nginx
+		 	state: present
+		 
+
+		-name: start nginx
+		 service: 
+		 	name: start nginx
+		 	state: started
