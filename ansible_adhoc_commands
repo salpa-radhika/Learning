@@ -1,0 +1,54 @@
+Installation process:
+from the instance run below commands:
+sudo apt update
+sudo apt install ansible
+ansible --version
+
+
+prerequisites for password less auth:
+create multiple servers(2)
+generate keys using ssh-keygen command get the keys from .ssh/id_rsa.pub(public key) and insert that data in second servers .ssh/authorised_keys file
+ssh second_server_private_ip
+works!
+
+
+The files created in ansible are called as playbooks
+Commands in ansible are called as ansible adhoc commands
+
+Sample commands 
+
+1)create a sample file in diff server:
+*for this create inventory file with private ip address of second server
+command -> ansible -i inventory[name of the inventory file] all[--lists-hosts] -a "touch file"[arguments] -m 'shell' [module]
+*cross check if file created in second server
+
+Note: Default inventory file will be available in sudo nano /etc/ansible/hosts
+
+
+2)check the connection of client servers
+
+ansible -i inventory all -m ping
+ansible -i inventory client_server -m ping
+
+3)Check if there are any files or directories 
+
+ansible -i inventory[0] -m "shell" -a "ls -l"
+ansible -i inventory client_server -m "shell" -a "ls -l"
+
+4)Copy files across the remote nodes
+
+ansible -i inventory all -m "copy" -a "src=./test dest=test1 mode=u-w,g+x,o-r"
+ansible -i inventory client_server -m "copy" -a "src=./test dest=test1 mode=u-x"
+
+5)setup module:This module is automatically called by playbooks to gather useful variables about remote hosts that can be used in playbooks. 
+
+ansible -i inventory client_server -m setup
+ansible -i inventory client_server -m setup -a 'filter=ansible_os_family'
+
+6)the highest cpu consuming processes you can use top command.
+ansible -i inventory client_server -m shell -a "top | head -1"
+
+7)list down the processes with higher memory consumption
+ansible -i inventory client_server -m shell -a "ps -ef | head -15"
+
+
