@@ -31,6 +31,16 @@ How ansible helped your organisation?
 Ansible helped our organisation in multiple ways like Change the configuration of an application, OS, or device; start and stop services; install or update applications; implement a security policy
 
 What is ansible dynamic inventory?
+The inventory file is key source for ansible, inventory file basically stores the ipv4 addresses of client servers.
+two types:
+Static: static inventory by default will be available in /etc/ansible/hosts with server addresses but we can also customise inventory file and specify path to that file while running adhoc commands.
+
+Dynamic: dynamic inventory is useful when there are multiple inhouse or cloud servers and addresses keep on changing then it would be difficult to maintain server address in file manually hence we can them through python scripts as input to our adhoc commands.
+
+test.py -> will give you addresses of filtered servers.
+test.ini -> source file where we can add filters such as on region / tag names etc
+
+ex: ansible -i test.py tag_Name_awslab* -m "ping"
 
 
 What is ansible galaxy command?
@@ -42,4 +52,16 @@ ansible-galaxy role init Kunernetes
 Structure of ansible playbooks with roles?
 tasks/handlers/metadata/readme/templates/defaults/variables
 
-Handlers are tasks that only run when notified.
+defaults -> default variables required for the roles 
+files -> all the files required 
+meta -> dependencies / supported platforms
+Handlers-> can be used inside or outside  tasks that only run when notified.
+tasks -> tasks that needs to be executed by the role
+templates -> templates
+tests-> test directories
+vars-> imp variable this folder has higher priority than defaults directory.
+
+
+
+
+
