@@ -20,33 +20,3 @@ debugging mechanism is not upto the mark along with performance while doing para
 Interview questions:
 https://www.youtube.com/watch?v=j5PgN0J3d7M&t=4s
 
-playbooks
-
-start with ---
-
----
-- name: install and start nginx
-  host: all
-  become: root
-
-  tasks:
-  - name: install nginx 
-    shell: sudo install nginx
-		 
-
-  - name: start nginx
-    service: 
-	 name: start nginx
-	 state: started
-execute -> ansible-playbook -i inventory file_name
-for verbose logs add -vvv
-i.e., ansible-playbook -vvv -i inventory file_name
-
-
-for complicated playbooks use roles
-
-ansible-galaxy role init kubernetes
-
-meta is used for metadata
-defaults is to store variable
-handlers for handling exception
