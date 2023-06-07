@@ -104,7 +104,6 @@ git switch
 git switch only works in between the branches
 
 
-access token: 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
 
 
 git stores data in the repo in key value i.e., SHA1
