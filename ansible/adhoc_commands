@@ -1,0 +1,94 @@
+The files created in ansible are called as playbooks
+Commands in ansible are called as ansible adhoc commands
+
+ansible modules doc for ref
+
+Sample commands 
+
+1)create a sample file in diff server:
+*for this create inventory file with private ip address of second server
+command -> ansible -i inventory[name of the inventory file] all[--lists-hosts] -a "touch file"[arguments] -m 'shell' [module]
+*cross check if file created in second server
+
+Note: Default inventory file will be available in sudo nano /etc/ansible/hosts
+
+
+2)check the connection of client servers
+
+ansible -i inventory all -m ping
+ansible -i inventory client_server -m ping
+
+3)Check if there are any files or directories 
+
+ansible -i inventory[0] -m "shell" -a "ls -l"
+ansible -i inventory client_server -m "shell" -a "ls -l"
+
+4)Copy files across the remote nodes
+
+ansible -i inventory all -m "copy" -a "src=./test dest=test1 mode=u-w,g+x,o-r"
+ansible -i inventory client_server -m "copy" -a "src=./test dest=test1 mode=u-x"
+
+5)setup module:This module is automatically called by playbooks to gather useful variables about remote hosts that can be used in playbooks. 
+
+ansible -i inventory client_server -m setup
+ansible -i inventory client_server -m setup -a 'filter=ansible_os_family'
+
+6)the highest cpu consuming processes you can use top command.
+ansible -i inventory client_server -m shell -a "top | head -1"
+
+7)list down the processes with higher memory consumption
+ansible -i inventory client_server -m shell -a "ps -ef | head -15"
+
+8)find uptime of remote server:
+ansible -i inventory client_server -m command -a "uptime"
+
+9)free memory:
+ansible -i inventory client_server -a "free -m"
+
+10) create group 
+ansible -i inventory client_server -m "group" -a "name=salpa state=present"
+
+11)add user to group
+ansible -i inventory client_server -m "user" -a "name=salpa group=salpa"
+
+12)create directory with permission 666
+ansible -i inventory client_server -m "file" -a "state=directory path=test_dir mode=666"
+
+13)change permissions for a diretcory
+ansible -i inventory client_server -m "file" -a "state=directory path=test_dir mode=g-wx,o-rx"
+
+14)Create a file with 755 permission using ansible ad hoc commands
+ansible -i inventory client_server -m "file" -a "state=touch  path=test_fil mode=444"
+
+15)modify file with permissions:
+ansible -i inventory client_server -m "file" -a "state=file path=test_file mode=442"
+
+16)change owner
+ansible -i inventory client_server -m "file" -a "path=test_fil group=salpa owner=salpa "
+
+17)run cron job every 15min
+
+ansible multi -s -m cron -a "name='daily-cron-all-servers' minute=*/15 
+
+#  Run the job every 15 minutes
+$ ansible multi -s -m cron -a "name='daily-cron-all-servers' minute=*/15 
+job='/path/to/minute-script.sh'"
+# Run the job every four hours
+$ ansible multi -s -m cron -a "name='daily-cron-all-servers' hour=4 
+job='/path/to/hour-script.sh'"
+# Enabling a Job to run at system reboot
+$ ansible multi -s -m cron -a "name='daily-cron-all-servers' special_time=reboot 
+job='/path/to/startup-script.sh'"
+# Scheduling a Daily job
+$ ansible multi -s -m cron -a "name='daily-cron-all-servers' special_time=daily 
+job='/path/to/daily-script.sh'"
+# Scheduling a Weekly job
+$ ansible multi -s -m cron -a "name='daily-cron-all-servers' special_time=weekly 
+job='/path/to/daily-script.sh'"
+
+
+
+18)download a file from URL
+
+ansible -i inventory client_server -m "get_url" -a "dest=hello  url=https://www.google.com/search?q=sample+file&oq=sample+file&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABDIHCAgQABiABDIHCAkQABiABNIBCDE1OTJqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8&bshm=ncc/1#imgrc=_GGCXqH5vlhgnM  mode=777"
+

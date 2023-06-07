@@ -1,0 +1,70 @@
+What is configuartion management?
+
+Configuration management comes in picture for automating system administrations tasks.
+Like before we used to manually performs tasks like updating software , installing some packages but if we have multiple servers for performing tasks then to overcome manual work can usde config managment tools
+
+Why Ansible?
+Ansible follows push mechanism which means we can write and execute the configuration to multiple servers
+It does follow master slave architecture i.e., agent less model
+No need of learning new language but can be used with yml language
+password less authentication which works with ssh
+it has an inventory file where can group client servers and perform tasks accordingly
+
+Write playbook for installing and starting any service?
+
+---
+-name: Package installation
+ hosts: client_server
+ become_user: root
+ tasks:
+  -name: install httpd
+   yum:
+    name: httpd
+    state: present
+  -name: start httpd
+   service:
+    name: httpd
+    state: started
+    enabled: yes
+
+How ansible helped your organisation?
+Ansible helped our organisation in multiple ways like Change the configuration of an application, OS, or device; start and stop services; install or update applications; implement a security policy
+
+What is ansible dynamic inventory?
+The inventory file is key source for ansible, inventory file basically stores the ipv4 addresses of client servers.
+two types:
+Static: static inventory by default will be available in /etc/ansible/hosts with server addresses but we can also customise inventory file and specify path to that file while running adhoc commands.
+
+Dynamic: dynamic inventory is useful when there are multiple inhouse or cloud servers and addresses keep on changing then it would be difficult to maintain server address in file manually hence we can them through python scripts as input to our adhoc commands.
+
+test.py -> will give you addresses of filtered servers.
+test.ini -> source file where we can add filters such as on region / tag names etc
+
+ex: ansible -i test.py tag_Name_awslab* -m "ping"
+
+
+What is ansible galaxy command?
+
+If you wanted to write playbooks with entire structure having handlers / readme / metadata then using galaxy command you can automatically get the default structure
+
+ansible-galaxy role init Kunernetes
+
+Structure of ansible playbooks with roles?
+tasks/handlers/metadata/readme/templates/defaults/variables
+
+defaults -> default variables required for the roles 
+files -> all the files required 
+meta -> dependencies / supported platforms
+Handlers-> can be used inside or outside  tasks that only run when notified.
+tasks -> tasks that needs to be executed by the role
+templates -> templates
+tests-> test directories
+vars-> imp variable this folder has higher priority than defaults directory.
+
+
+https://mindmajix.com/ansible-interview-questions#information
+
+
+
+
+

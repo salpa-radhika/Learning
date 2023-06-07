@@ -1,0 +1,14 @@
+---
+-name: Package installation
+ hosts: client_server
+ become_user: root
+ tasks:
+  -name: install httpd
+   yum:
+    name: httpd
+    state: present
+  -name: start httpd
+   service:
+    name: httpd
+    state: started
+    enabled: yes
