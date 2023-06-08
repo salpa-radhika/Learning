@@ -46,3 +46,23 @@ ex: aws_s3_bucket.terraform_bucket.server_side_encryption_configuration[0].rule[
 Store plan command output into file
 
 terraform plan -out plan_output.tfplan
+
+
+
+
+If you wanted to execute only one resource out of multiple resources
+
+terraform apply -target=aws_iam_user.terraform_user
+above commands also executes dependency resources.
+
+
+
+Some of the Terraform blocks (elements) and their purpose is given below
+
+providers - the provider name aws, google, azure etc
+resources - a specific resource with in the provide such as aws_instance for aws
+variable - to declare input variables
+output - to declare output variables which would be retained the Terraform state file
+local - to assign value to an expression, these are local temporary variables work with in a module
+module - A module is a container for multiple resources that are used together.
+data - To Collect data from the remote provider and save it as a data source
