@@ -1,1 +1,94 @@
-What is Terraform?
+What is IAC? Why terraform ?
+
+Infrastructure as code where we provide, automate and manage the infrastructure.
+Terraform is the one of the most used IAC tool to manage, track, automate and Standardize configuration.
+
+Terraform works as API as code. For creating infrastructure terraform uses api to communicate with the providers.
+It uses HCL language HashiCorp Configuration Language which is human readeable
+We can commit our configuartion  in version control like github or git lab
+Terraform's state allows you to track resource changes throughout your deployments.
+
+
+What are modules?
+A module is a container for multiple resources that are used together.
+
+what is state file ?
+State file is a key component in terraform, it keeps track of resources which got executed.
+
+what are common used terraform commands?
+
+Terraform  init          Prepare your working directory for other commands
+Terraform  validate      Check whether the configuration is valid
+Terraform plan          Show changes required by the current configuration
+Terraform  apply         Create or update infrastructure
+Terraform  destroy       Destroy previously-created infrastructure
+Terraform Version
+Terraform console
+Terraform output
+
+
+what is terraform backend?
+
+Whereever we store state file is considered as terraform backend.
+
+what is terraform remote backend?
+
+In some scenarios like multiple teams uses the terraform scripts simultaneously we might receive conflicts from providers so we store state files remotely and apply locking.
+ 
+How to handle secrets in Terraform?
+
+Can handle using terraform remote backend with restricted permission using RBAC.
+
+
+What is resource graph in terraform?
+
+This is dependency graph which helps showing output of terraform plan and apply
+
+what is terraform state locking?
+In some scenarios like multiple teams uses the terraform scripts simultaneously we might receive conflicts from providers so we store state files remotely and apply locking.
+
+ex: DynamoDB
+
+What is tainted terraform resource?
+
+Using terraform taint command inform that an object is degraded or damaged.
+Terraform represents this by marking the object as "tainted" in the Terraform state, and
+Terraform will propose to replace it in the next plan you create. 
+Warning: This command is deprecated.
+
+What is terraform state rollback?
+not suggestable 
+
+Terraform validate:
+It checks the syntax of all the files created which ignores formatting poroblems
+
+What would you choose in between terraform and ansible ? why?
+Terraform     Ansible
+HCL      		YAML
+Hashicorp		Red hat
+creating infra  manage configuartion
+
+
+
+What if terraform state file is deleted?
+So if the state file gets lost, Terraform will think it never created those resources in the first place and will try to duplicate everything.
+
+
+What are terraform modules?
+Root module:
+Every Terraform configuration has at least one module, known as its root module, which consists of the resources defined in the .tf files in the main working directory.
+Child module:
+Any module that can be called by another module (usually the Root module) is considered a child module.
+Published Modules:
+Published Modules are modules pushed to a private or public repository. 
+
+
+
+How do you pass runtime variables in Terraform?
+
+Using the -var Command-line Flag
+
+The -var flag is used to pass values for Input Variables to Terraform commands. 
+The argument passed to the -var flag is a string surrounded by either single or double quotes.
+
+

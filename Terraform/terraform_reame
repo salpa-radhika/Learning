@@ -66,3 +66,18 @@ output - to declare output variables which would be retained the Terraform state
 local - to assign value to an expression, these are local temporary variables work with in a module
 module - A module is a container for multiple resources that are used together.
 data - To Collect data from the remote provider and save it as a data source
+
+
+
+Meta arguments
+Meta-arguments are special arguments in Terraform that are used to control how resources are created, updated, or destroyed.
+
+Count
+Count is an argument that takes a integer value that tells how many copies of a resource to make. When you use count, each instance gets a number (starting with 0), which you can use to get to that instance.
+
+for_each:
+This option can be either a map or a set of strings. For each item in the map or set of strings, a new instance is made. The map or set gives each instance a key that can be used to get to that instance.
+
+
+doc for terraform
+https://jhooq.com/terraform-import-resource/
